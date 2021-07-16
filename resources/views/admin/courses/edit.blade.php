@@ -6,7 +6,7 @@
     <h1>Editar Curso</h1>
     <hr>
     <div class="row">
-        <div class="col-md-6">
+    <div class="col-md-6">
             <form action="{{url('/admin/cursos/update/'.$curso->id)}}" class="form-group" enctype="multipart/form-data" method="POST">
                 @csrf
                 @method('PUT')

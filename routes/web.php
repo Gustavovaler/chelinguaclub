@@ -26,6 +26,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /*--------------------------------------------------------------------------------
 Rutas de admin
 --------------------------------------------------------------------------------*/
+Route::middleware(['auth'])->group(function () {
+
 
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
 Route::get('/admin/cursos', [\App\Http\Controllers\AdminController::class, 'createCourse']);
@@ -33,3 +35,8 @@ Route::post('/admin/cursos', [\App\Http\Controllers\AdminController::class, 'sto
 Route::delete('/admin/cursos/{id}', [\App\Http\Controllers\AdminController::class, 'deleteCourse']);
 Route::get('/admin/cursos/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editCourse']);
 Route::put('/admin/cursos/update/{id}', [\App\Http\Controllers\AdminController::class, 'updateCourse']);
+Route::get('/admin/pricing', [\App\Http\Controllers\AdminController::class, 'createPricingCard'] );
+Route::post('/admin/pricing', [\App\Http\Controllers\AdminController::class, 'storePricingCard'] );
+
+
+});

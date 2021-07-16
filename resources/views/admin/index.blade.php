@@ -63,6 +63,34 @@
                 <div class="card-header">
                     <h1>Precios</h1>
                 </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-content-center">
+                        <h3>Acciones:</h3> <a href="{{url('/admin/pricing')}}" class="btn btn-info text-white ml-5">Crear nuevo pricing</a>
+                    </div>
+                    <div class="table-content pt-4 pl-2 ">
+
+                        <div class="row">
+                            @foreach ($pricings as $item)
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <div class="card-body" style="background-color:{{$item->color}}">
+                                            <h3 class="text-center">{{$item->currency}} - {{$item->price}}</h3>
+                                            <h2 class="text-center">{{$item->title}}</h2>
+                                            <h5 class="text-center">{{$item->item1}}</h5>
+                                            <h5 class="text-center">{{$item->item2}}</h5>
+                                            <h5 class="text-center">{{$item->item3}}</h5>
+                                            <h5 class="text-center">{{$item->item4}}</h5>
+                                            <h5 class="text-center">{{$item->item5}}</h5>
+                                            <h3 class="text-center"> {{$item->offer}}</h3>
+                                            <h5>{{$item->footer}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-12 mt-3">
