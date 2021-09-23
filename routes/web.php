@@ -39,4 +39,17 @@ Route::get('/admin/pricing', [\App\Http\Controllers\AdminController::class, 'cre
 Route::post('/admin/pricing', [\App\Http\Controllers\AdminController::class, 'storePricingCard'] );
 
 
+///------------------------------------------------------------
+//                  RUTAS AJAX
+///------------------------------------------------------------
+
+Route::get('/v1/cursos/{lang}', [\App\Http\Controllers\api\CursosApiController::class,  'index']);
+
+
+Route::get('/v1/pricing/{lang}', [\App\Http\Controllers\api\PricingApiController::class,  'index']);
+
+
+Route::post('/v1/contact', [\App\Http\Controllers\ContactController::class, 'storeContact']);
+
+
 });

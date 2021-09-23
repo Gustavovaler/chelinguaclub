@@ -97,8 +97,9 @@ class AdminController extends Controller
         $pricing->offer    = $request->input('offer');
         $pricing->footer   = $request->input('footer');
         $pricing->color    = $request->input('color');
+        $pricing->lang     = $request->input('lang');
         $pricing->save();
-        return $pricing;
+        return redirect('/admin');
     }
 
     public function updatePricingCard(){

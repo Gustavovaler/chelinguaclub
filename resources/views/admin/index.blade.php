@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
+<link rel="stylesheet" href="{{asset('css/admin/index.css')}}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <div class="container">
 
     <h1>Admin</h1>
@@ -9,6 +10,32 @@
     <hr>
 
     <div class="row">
+        <div class="col-md-12 mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Formulario de contacto</h1>
+                </div>
+                <div class="card-body">
+                    <div class="wrap">
+                        <div class="datos border-r">
+                            Nombre: Olivia Shawn <br> Email: olshawn94@gmail.com  <br> Tel:
+                        </div>
+                        <div class="datos">
+                            Recibido:  2021-02-08 16:32 <br> Respondido:   <br> Ref:
+                        </div>
+                        <div class="msg">
+                            Mensaje: <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus eaque quae harum, repudiandae explicabo libero atque possimus veritatis, ea illum! Quae enim commodi velit fuga. Corrupti tenetur iusto corporis!
+                        </div>
+                        <div class="actions">
+                            <a href="" class="btn btn-da"><h4 class="inline"></h4>
+                                <h3 class="inline"><i class="bi bi-reply"></i></h3>
+                                <h4 class="inline"><i class="bi bi-trash"></i></h4></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-md-12 ">
 
             <div class="card">
@@ -90,13 +117,6 @@
 
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 mt-3">
-            <div class="card">
-                <div class="card-header">
-                    <h1>Tarjetas Home</h1>
                 </div>
             </div>
         </div>

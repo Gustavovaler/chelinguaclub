@@ -43,6 +43,11 @@
                     <label for="">Nota al pie</label>
                     <input type="text" class="form-control" name="footer">
                     <br>
+                    <br>
+                    <label for="">Idioma de esta tarjeta</label>
+                    <input type="radio" class="" name="lang" value="1" required> Español --
+                    <input type="radio" class="" name="lang" value="0" required>Ingles
+                    <br>
                     <label for="">Color de fondo</label>
                     <br>
                     <label for="" style="background-color: #4db6ac"> ..... </label> <input type="radio" name="color"  value="#4db6ac"><br>
@@ -52,6 +57,7 @@
 
                     <hr>
                     <br>
+
                     <input type="submit" class="btn btn-success btn-block" value="Guardar pricing">
 
                 </form>
