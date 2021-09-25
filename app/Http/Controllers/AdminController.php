@@ -16,12 +16,12 @@ class AdminController extends Controller
         $cursos   = Curse::all();
         $pricings = PricingCard::all();
         $contacts = Contact::orderBy('created_at', 'desc')->get();
-        $registros = Registration::orderBy('created_at', 'desc')->get();
+
 
         if ($request->ajax()) {
             return response()->json($cursos);
         }
-        return view('admin.index', compact('cursos', 'pricings', 'contacts', 'registros'));
+        return view('admin.index', compact('cursos', 'pricings', 'contacts'));
     }
 
     public function createCourse()

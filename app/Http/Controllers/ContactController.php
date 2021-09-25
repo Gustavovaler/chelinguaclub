@@ -30,4 +30,9 @@ class ContactController extends Controller
         return response()->json(['status' =>  $res]);
     }
 
+    public function index(){
+        $contacts = Contact::orderBy('created_at', 'desc')->get();
+        return view('admin.contact', compact('contacts'));
+    }
+
 }

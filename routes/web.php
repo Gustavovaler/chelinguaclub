@@ -37,8 +37,8 @@ Route::get('/admin/cursos/edit/{id}', [\App\Http\Controllers\AdminController::cl
 Route::put('/admin/cursos/update/{id}', [\App\Http\Controllers\AdminController::class, 'updateCourse']);
 Route::get('/admin/pricing', [\App\Http\Controllers\AdminController::class, 'createPricingCard'] );
 Route::post('/admin/pricing', [\App\Http\Controllers\AdminController::class, 'storePricingCard'] );
-
-
+Route::get('/admin/registration', [\App\Http\Controllers\RegistrationController::class, 'index'] );
+Route::get('/admin/contacto', [\App\Http\Controllers\ContactController::class, 'index'] );
 ///------------------------------------------------------------
 //                  RUTAS AJAX
 ///------------------------------------------------------------
