@@ -10,13 +10,15 @@
     <hr>
 
     <div class="row">
-        <div class="col-md-12 mt-3">
+        <div class="col-md-12 mt-3 mb-2">
             <div class="card">
                 <div class="card-header">
-                    <h1>Formulario de contacto</h1>
+                    <h1>Mensajes del formulario de contacto</h1>
                 </div>
-                {{-- sadasd --}}
-                <contact></contact>
+                @foreach ($contacts as $contact)
+                    <contact datos="{{$contact}}"></contact>
+                @endforeach                
+                
             </div>
         </div>
         <div class="col-md-12 ">

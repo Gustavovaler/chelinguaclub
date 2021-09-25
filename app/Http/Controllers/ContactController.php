@@ -11,7 +11,6 @@ class ContactController extends Controller
 
         try {
            $contacto = new Contact();
-
             $contacto->name = $request->input('name');
             $contacto->email = $request->input('email');
             $contacto->msg  = $request->input('message');
@@ -24,4 +23,5 @@ class ContactController extends Controller
             return response()->json(['status' => 'error']);
         }
     }
+
 }

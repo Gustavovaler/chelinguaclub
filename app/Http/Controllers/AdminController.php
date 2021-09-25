@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curse;
+use App\Models\Contact;
 use App\Models\PricingCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,11 +13,12 @@ class AdminController extends Controller
     public function index(Request $request){
         $cursos = Curse::all();
         $pricings = PricingCard::all();
+        $contacts = Contact::orderBy('created_at','desc')->get();
 
         if ($request->ajax()) {
            return response()->json($cursos);
         }
-        return view('admin.index', compact('cursos', 'pricings'));
+        return view('admin.index', compact('cursos', 'pricings', 'contacts'));
     }
 
     public function createCourse(){

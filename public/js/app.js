@@ -1845,6 +1845,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Config */ "./resources/js/Config.js");
 //
 //
 //
@@ -1866,10 +1867,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['datos'],
   data: function data() {
-    return {};
+    return {
+      datos_json: null
+    };
+  },
+  created: function created() {
+    this.datos_json = JSON.parse(this.datos);
+  },
+  mounted: function mounted() {
+    console.log(this.datos);
+  },
+  methods: {
+    deleteMsg: function deleteMsg(id) {
+      console.log(id, _Config__WEBPACK_IMPORTED_MODULE_0__.default.APP_URL);
+    }
   }
 });
 
@@ -1906,6 +1921,23 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Component mounted.');
   }
+});
+
+/***/ }),
+
+/***/ "./resources/js/Config.js":
+/*!********************************!*\
+  !*** ./resources/js/Config.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (config = {
+  APP_URL: "http://chelinguaclub.test"
 });
 
 /***/ }),
@@ -37537,53 +37569,62 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "card-body" }, [
+    _c("div", { staticClass: "wrap" }, [
+      _c("div", { staticClass: "datos border-r" }, [
+        _vm._v(
+          "\n                Nombre: " + _vm._s(_vm.datos_json.name) + " "
+        ),
+        _c("br"),
+        _vm._v(" Email: " + _vm._s(_vm.datos_json.email) + "  "),
+        _c("br"),
+        _vm._v(" Tel: " + _vm._s(_vm.datos_json.phone) + "\n        ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "datos" }, [
+        _vm._v(
+          "\n                Recibido:  " +
+            _vm._s(_vm.datos_json.created_at) +
+            " "
+        ),
+        _c("br"),
+        _vm._v(" Respondido:   "),
+        _c("br"),
+        _vm._v(" Ref:\n        ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "msg" }, [
+        _vm._v("\n            Mensaje: "),
+        _c("br"),
+        _vm._v(" " + _vm._s(_vm.datos_json.msg) + "\n        ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "actions" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "h4",
+          {
+            staticClass: "inline",
+            on: {
+              click: function($event) {
+                return _vm.deleteMsg(_vm.datos_json.id)
+              }
+            }
+          },
+          [_c("i", { staticClass: "bi bi-trash" })]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "wrap" }, [
-        _c("div", { staticClass: "datos border-r" }, [
-          _vm._v("\n                Nombre: Olivia Shawn "),
-          _c("br"),
-          _vm._v(" Email: olshawn94@gmail.com  "),
-          _c("br"),
-          _vm._v(" Tel:\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "datos" }, [
-          _vm._v("\n                Recibido:  2021-02-08 16:32 "),
-          _c("br"),
-          _vm._v(" Respondido:   "),
-          _c("br"),
-          _vm._v(" Ref:\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "msg" }, [
-          _vm._v("\n            Mensaje: "),
-          _c("br"),
-          _vm._v(
-            " Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus eaque quae harum, repudiandae explicabo libero atque possimus veritatis, ea illum! Quae enim commodi velit fuga. Corrupti tenetur iusto corporis!\n        "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "actions" }, [
-          _c("a", { staticClass: "btn btn-da", attrs: { href: "" } }, [
-            _c("h4", { staticClass: "inline" }),
-            _vm._v(" "),
-            _c("h3", { staticClass: "inline" }, [
-              _c("i", { staticClass: "bi bi-reply" })
-            ]),
-            _vm._v(" "),
-            _c("h4", { staticClass: "inline" }, [
-              _c("i", { staticClass: "bi bi-trash" })
-            ])
-          ])
-        ])
-      ])
+    return _c("h3", { staticClass: "inline" }, [
+      _c("i", { staticClass: "bi bi-reply" })
     ])
   }
 ]
