@@ -9,10 +9,7 @@ use Illuminate\Http\Request;
 class CursosApiController extends Controller
 {
     public function index($lang = 'en'){
-
         $cursos = Curse::all();
-
         return response()->json($cursos);
-
     }
 }

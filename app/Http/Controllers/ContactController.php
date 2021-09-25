@@ -24,4 +24,10 @@ class ContactController extends Controller
         }
     }
 
+    public function deleteContact($id){
+        $contact = Contact::find($id);
+        $res = $contact->delete();
+        return response()->json(['status' =>  $res]);
+    }
+
 }

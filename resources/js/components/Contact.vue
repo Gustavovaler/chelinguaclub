@@ -11,16 +11,17 @@
                 Mensaje: <br> {{datos_json.msg}}
             </div>
             <div class="actions">
-                
+
                 <h3 class="inline"><i class="bi bi-reply"></i></h3>
-                <h4 class="inline" @click="deleteMsg(datos_json.id)"><i class="bi bi-trash"></i></h4>
+                <h4 class="inline" @click="deleteMsg(datos_json.id)" style="cursor:pointer"><i class="bi bi-trash"></i></h4>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import config from './../Config';
+import Config from './../Config'
+import axios from 'axios';
 export default {
     props:['datos'],
     data(){
@@ -33,11 +34,16 @@ export default {
         this.datos_json = JSON.parse(this.datos)
     },
     mounted() {
-        console.log(this.datos)
+        // console.log(this.datos)
     },
     methods: {
         deleteMsg(id){
-            console.log(id, config.APP_URL)
+            axios.delete(`${Config.APP_URL}/v1/contact/${id}`)
+                .then(res => {
+                    if (res.data.status == true) {
+                        window.location.reload();
+                    }
+                })
         }
     },
 }

@@ -5,27 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\Curse;
 use App\Models\Contact;
 use App\Models\PricingCard;
+use App\Models\Registration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
-    public function index(Request $request){
-        $cursos = Curse::all();
+    public function index(Request $request)
+    {
+        $cursos   = Curse::all();
         $pricings = PricingCard::all();
-        $contacts = Contact::orderBy('created_at','desc')->get();
+        $contacts = Contact::orderBy('created_at', 'desc')->get();
+        $registros = Registration::orderBy('created_at', 'desc')->get();
 
         if ($request->ajax()) {
-           return response()->json($cursos);
+            return response()->json($cursos);
         }
-        return view('admin.index', compact('cursos', 'pricings', 'contacts'));
+        return view('admin.index', compact('cursos', 'pricings', 'contacts', 'registros'));
     }
 
-    public function createCourse(){
+    public function createCourse()
+    {
         return view('admin.courses.create');
     }
 
-    public function storeCourse(Request $request){
+    public function storeCourse(Request $request)
+    {
 
         $curso = new Curse();
         $curso->title_es = $request->input('title_es');
@@ -33,15 +38,16 @@ class AdminController extends Controller
         $curso->description = $request->input('description');
         $curso->description_es = $request->input('description_es');
         if ($request->file()) {
-           $path = $request->file('img')
-                ->storeAs('images', time().$request->file('img')->getClientOriginalName());
+            $path = $request->file('img')
+                ->storeAs('images', time() . $request->file('img')->getClientOriginalName());
             $curso->img = $path;
         }
         $curso->save();
         return redirect('/admin');
     }
 
-    public function deleteCourse($id){
+    public function deleteCourse($id)
+    {
 
         $curso = Curse::find($id);
         $imagen = $curso->img;
@@ -49,13 +55,14 @@ class AdminController extends Controller
         $curso->delete();
         return redirect('/admin');
     }
-    public function editCourse($id){
+    public function editCourse($id)
+    {
         $curso = Curse::find($id);
         return view('admin.courses.edit', compact('curso'));
-
     }
 
-    public function updateCourse(Request $request, $id){
+    public function updateCourse(Request $request, $id)
+    {
         $curso = Curse::find($id);
         $curso->title_es = $request->input('title_es');
         $curso->title = $request->input('title');
@@ -67,26 +74,29 @@ class AdminController extends Controller
             $curso->delete();
             //cargar la imagen nueva
             $path = $request->file('img')
-                ->storeAs('images', time().$request->file('img')->getClientOriginalName());
+                ->storeAs('images', time() . $request->file('img')->getClientOriginalName());
             $curso->img = $path;
         }
         $curso->save();
 
         return redirect('/admin');
-
     }
 
-    public function createPricingCard(){
+    public function createPricingCard()
+    {
 
         return view('admin.pricing.create');
     }
-    public function editPricingCard(){
-        return ;
+    public function editPricingCard()
+    {
+        return;
     }
-    public function deletePricingCard(){
-        return ;
+    public function deletePricingCard()
+    {
+        return;
     }
-    public function storePricingCard(Request $request){
+    public function storePricingCard(Request $request)
+    {
         $pricing = new PricingCard();
         $pricing->price    = $request->input('price');
         $pricing->currency = $request->input('currency');
@@ -104,7 +114,8 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    public function updatePricingCard(){
-        return ;
+    public function updatePricingCard()
+    {
+        return;
     }
 }

@@ -1,5 +1,6 @@
 
 
-export default config = {
-    APP_URL : "http://chelinguaclub.test"
+const config = {
+    APP_URL : "https://chelinguaclub.test"
 }
+export default config

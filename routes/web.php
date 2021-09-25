@@ -50,6 +50,8 @@ Route::get('/v1/pricing/{lang}', [\App\Http\Controllers\api\PricingApiController
 
 
 Route::post('/v1/contact', [\App\Http\Controllers\ContactController::class, 'storeContact']);
-
+Route::delete('/v1/contact/{id}', [\App\Http\Controllers\ContactController::class, 'deleteContact']);
 
 });
+
+

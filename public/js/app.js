@@ -1846,6 +1846,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Config */ "./resources/js/Config.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -1868,6 +1870,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['datos'],
   data: function data() {
@@ -1878,12 +1881,15 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.datos_json = JSON.parse(this.datos);
   },
-  mounted: function mounted() {
-    console.log(this.datos);
+  mounted: function mounted() {// console.log(this.datos)
   },
   methods: {
     deleteMsg: function deleteMsg(id) {
-      console.log(id, _Config__WEBPACK_IMPORTED_MODULE_0__.default.APP_URL);
+      axios__WEBPACK_IMPORTED_MODULE_1___default().delete("".concat(_Config__WEBPACK_IMPORTED_MODULE_0__.default.APP_URL, "/v1/contact/").concat(id)).then(function (res) {
+        if (res.data.status == true) {
+          window.location.reload();
+        }
+      });
     }
   }
 });
@@ -1936,9 +1942,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (config = {
-  APP_URL: "http://chelinguaclub.test"
-});
+var config = {
+  APP_URL: "https://chelinguaclub.test"
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (config);
 
 /***/ }),
 
@@ -37606,6 +37613,7 @@ var render = function() {
           "h4",
           {
             staticClass: "inline",
+            staticStyle: { cursor: "pointer" },
             on: {
               click: function($event) {
                 return _vm.deleteMsg(_vm.datos_json.id)
@@ -49933,6 +49941,18 @@ webpackContext.id = "./resources/js sync recursive \\.vue$/";
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	
